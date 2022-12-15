@@ -33,7 +33,6 @@ tr:nth-child(even){
 }
 label{
     font-size:15px;
-    font-family:italic;
     font-weight:900;
 }
 span{
