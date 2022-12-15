@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inddex pages <!-- edit name  --></title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body dir="rtl" onload="load_capatcha(main_capatcha);">
+    <div class="container" >
+        <div class="card"> 
+            <div class="card_title" > 
+                <h4> إضافة طالب </h4> 
+            </div>
+            <div class="card_content" >
+                <form action="">
+                    <div class="card_row">
+                        <div>
+                            <label for="id_input_user_name"> اسم المستخدم  </label>
+                            <input id="id_input_user_name" type="text">
+                        </div> 
+                       
+                        <div>
+                            <small id="id_error_user_name" style="color: red;" >   </small>
+                        </div>
+                    </div> 
+                    <div class="card_row"> 
+                        <div>
+                            <label for="id_input_student_name"> اسم الطالب </label>
+                            <input type="text"  id="id_input_student_name" >
+                        </div>
+                       
+                        <div>
+                            <small id="id_error_student_name" style="color: red;" > </small>
+                        </div>
+
+                    </div> 
+                    <div class="card_row"> 
+                        <div>
+                            <label for="id_input_birthday"> تاريخ الولادة </label>
+                        <input type="date" id="id_input_birthday" >
+                        </div>
+                        <div>
+                            <small id="id_error_birthday" style="color: red;" > </small>
+                        </div>
+
+                    </div> 
+                    <div class="card_row"> 
+                        <div>
+                            <label for="">البرنامج </label>
+                        <select name="program_name" id="id_select_program_name">
+                            <option value="BIT" selected4> BIT </option>
+                            <option value="TIC"> TIC </option>
+                            <option value="IT"> IT </option>
+                        </select>
+                        </div>
+                        <div>
+                            <small id="id_error_program_name" style="color: red;" > </small>
+                        </div>
+
+                    </div>
+                    <div class="card_row">
+                        <div>
+                            <label for="id_input_phone">الموبايل</label>
+                            <input type="text" id="id_input_phone">
+                        </div> 
+                       
+                        <div>
+                            <small id="id_error_phone" style="color: red;" > </small>
+                        </div>
+
+                    </div>
+                    <div class="card_row" >
+                        <!-- <span></span> -->
+                        <span id="main_capatcha"></span> 
+                    </div>
+                    <div class="card_row">
+                        <div>
+                            <label for="id_input_capatcha"> يرجى إدخال رمز التحقق (كاباتشا)</label> 
+                    
+                            <input type="text" id="id_input_capatcha"> 
+                        </div>
+                       
+                        <div>
+                            <small id="id_error_capatcha" style="color: red;" > </small>
+                        </div>
+
+                    </div>
+                    <div class="card_row">
+                        <input type="button" class="btn"  id="id_btn_insert" onclick="insert()" value="إضافة طالب "> 
+                       
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+       
+
+        <div class="card">
+            
+            <div class="card_title"> 
+                <h4> جدول باسماء الطلاب  </h4>
+
+            </div>
+            <div class="card_content" >
+                <div>
+                    <form action="">
+                        <div>
+                            <span> البرنامج </span>
+                            <select name="" id="id_select_programs_list" onchange="filter_list(student_list, this.value );">
+                                <option value="ALL" selected > All </option> 
+                                <option value="BIT"> BIT </option>
+                                <option value="TIC"> TIC </option>
+                                <option value="IT"> IT </option>
+                            </select>
+                        </div>
+                        <div> 
+                            <span> الفرز حسب : </span>
+                            <div> 
+                                <input type="radio" name="sort_by" value="1" onchange="show_student_list(sort_list(temp_student_list , this.value));"  checked id=""> رقم المستخدم 
+                                <input type="radio" name="sort_by" value="2" onchange="show_student_list(sort_list(temp_student_list , this.value));" id=""> اسم الطالب
+                                <input type="radio" name="sort_by" value="3" onchange="show_student_list(sort_list(temp_student_list , this.value));" id=""> البرنامج
+                            </div>
+                            
+                        </div>
+                        
+                    </form>
+                   
+                </div>
+                <table > 
+                    <thead> 
+                        <th> متسلسل</th>
+                        <th> اسم المستخدم  </th>
+                        <th> اسم الطالب</th>
+                        <th> البرنامج</th>
+                    </thead>
+                    <tbody id="id_tbody_list_student"> 
+    
+                    </tbody>
+                </table>
+                  
+               
+                    
+                
+            </div>
+        </div>
+        <div class="data">
+            <div>
+                <input type="button"  class="btn" id="id_btn_convert_to_json" onclick="convert_to_JSON(temp_student_list);" value="convert to JSON">
+            </div>
+            <div>
+                <textarea  id="id_textarea_json_data" cols="50" rows="30"></textarea>
+
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="./script.js">
+      
+    </script>
+</body>
+</html>
