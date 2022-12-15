@@ -1,8 +1,8 @@
   //  مصفوفة بخزن فيها بيانات الطلاب 
   var student_list = [
-    { "NO" : 1 , "Username" :  "user_id", "Bdate" : "22/12/2019", "Name" : "A"  , "Program" : "BIT" , "Mobile" : "963998019385"},   
-    { "NO" : 2 , "Username" :  "user_id", "Bdate" : "22/12/2019", "Name" : "C"  , "Program" : "IT" , "Mobile" : "963998019385"},
-    { "NO" : 3 ,"Username" :  "user_id", "Bdate" : "22/12/2019", "Name" : "B"  , "Program" : "TIC" , "Mobile" : "963998019385"},
+    { "NO" : 1 , "Ali_123" :  "user_id", "Bdate" : "Monday , November 05 , 2001", "Name" : "على"  , "Program" : "BIT" , "Mobile" : "+963-9963251123"},   
+    { "NO" : 2 , "Ahmad_123" :  "user_id", "Bdate" : "Wednesday , May 05 ,1999", "Name" : "احمد"  , "Program" : "IT" , "Mobile" : "+963-9963251456"},
+    { "NO" : 3 ,"Samer_123" :  "user_id", "Bdate" : "Saturday , March 12 , 1998", "Name" : "سامر"  , "Program" : "TIC" , "Mobile" : "+963-9963251789"},
 ];
 /*  
     مصفوفة تحتوي البيانات يلي رح يتم عرضها ( مثلا اذا كنا مغيرين نوع الفرز او عرض لاختصاص واحد فقط ) 
@@ -130,11 +130,17 @@ function insert(){
     isValiad_data =  validate(input_student_name , input_user_name , input_phone ,input_birthday  ,input_capatcha);
     if(isValiad_data === true){
         // البيانات صحية 
+        // fromating date  
+        input_birthday = format_date(input_birthday);
         // إدخال بيانات طالب جديد 
         insert_student(input_student_name , input_user_name , input_phone ,input_birthday  ,input_program);
         // عرض البيانات الجديدة على الصفحة 
         show_student_list(temp_student_list);
     }
+}
+function fromat_date(date){
+    let date_object =  new  Date(date).toLocaleDateString('en-us', { weekday:"long", month:"long", day:"numeric" , year:"numeric"});
+    return format_date ;
 }
 
 function validate(input_student_name , input_user_name , input_phone ,input_birthday   ,input_capatcha){
